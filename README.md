@@ -24,10 +24,8 @@ and start the app.
 ### `npm start`
 
 <div>
-    <p align="left">
+    <p float="left">
         <img src="./public/favicon.ico">
-    </p>
-    <p align="right">
         <img src="./public/images/optimax-logo.png">
     </p>
 </div>
