@@ -28,5 +28,11 @@ and start the app.
         <img src="./public/favicon.ico" width="100"/>
         <img src="./public/favicon.ico" width="100"/>
         <img src="./public/favicon.ico" width="100"/>
+        <img src="./public/favicon.ico" width="100"/>
+        <img src="./public/favicon.ico" width="100"/>
+        <img src="./public/favicon.ico" width="100"/>
+        <img src="./public/favicon.ico" width="100"/>
+        <img src="./public/favicon.ico" width="100"/>
+        <img src="./public/favicon.ico" width="100"/>
     </p>
 </div>
