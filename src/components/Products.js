@@ -13,7 +13,6 @@ class Products extends Component {
         this.props.fetchProducts();
     }
     render() {
-        const { product } = this.state;
         return(
             <div>
                 {

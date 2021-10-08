@@ -22,3 +22,7 @@ Launch the server
 ### `npm run server`
 and start the app.
 ### `npm start`
+
+<p align="center">
+    <img src="./public/images/optimax-logo.png">
+</p>
