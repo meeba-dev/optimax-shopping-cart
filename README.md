@@ -1,7 +1,3 @@
-<p>
-    <img src="./public/images/optimax-logo.png">
-</p>
-
 # Optimax test task for front-end developer
 
 This project was made by React, Redux and TypeScript.
@@ -26,3 +22,7 @@ Launch the server
 ### `npm run server`
 and start the app.
 ### `npm start`
+
+<p align="right">
+    <img src="./public/images/optimax-logo.png">
+</p>
