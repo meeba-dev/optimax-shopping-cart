@@ -1,10 +1,10 @@
+<p>
+    <img src="./public/images/optimax-logo.png">
+</p>
+
 # Optimax test task for front-end developer
 
 This project was made by React, Redux and TypeScript.
-
-<p align="center">
-    <img src="./public/images/optimax-logo.png">
-</p>
 
 ## The job were done
 
