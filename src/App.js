@@ -2,7 +2,8 @@ import React from "react";
 import Products from "./components/Products";
 import Cart from "./components/Cart";
 import data from "./data.json";
-
+import store from "./store";
+import { Provider } from "react-redux";
 
 class App extends React.Component {
   constructor() {
@@ -56,30 +57,32 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div className="grid-container">
-        <header>
-          <a href="/">
-            <img src="/images/optimax-logo.png" alt="logo"/>
-          </a>
-        </header>
-        <main>
-          <div className="content">
-            <div className="main">
-              <Products 
-                products={this.state.products} 
-                addToCart={this.addToCart}>
-              </Products>
+      <Provider store={store}>
+        <div className="grid-container">
+          <header>
+            <a href="/">
+              <img src="/images/optimax-logo.png" alt="logo"/>
+            </a>
+          </header>
+          <main>
+            <div className="content">
+              <div className="main">
+                <Products 
+                  products={this.state.products} 
+                  addToCart={this.addToCart}>
+                </Products>
+              </div>
+              <div className="sidebar">
+                <Cart createOrder={this.createOrder} cartItems={this.state.cartItems} removeFromCart={this.removeFromCart} addToCart={this.addToCart} takeFromCart={this.takeFromCart}/>
+              </div>
             </div>
-            <div className="sidebar">
-              <Cart createOrder={this.createOrder} cartItems={this.state.cartItems} removeFromCart={this.removeFromCart} addToCart={this.addToCart} takeFromCart={this.takeFromCart}/>
-            </div>
-          </div>
-        </main>
-        <footer>
-            <p> Made by Mikhail Baum &#9752;</p>
-            <p>&copy; All copyrights reserved 2021</p>
-        </footer>
-      </div>
+          </main>
+          <footer>
+              <p> Made by Mikhail Baum &#9752;</p>
+              <p>&copy; All copyrights reserved 2021</p>
+          </footer>
+        </div>
+      </Provider>
       );
   }
 }
