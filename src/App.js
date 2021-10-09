@@ -83,7 +83,7 @@ class App extends React.Component {
           </footer>
         </div>
       </Provider>
-      );
+    );
   }
 }
 

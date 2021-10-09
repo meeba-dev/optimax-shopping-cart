@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+//import { connect } from 'react-redux';
+//import { removeFromCart } from '../actions/cartActions';
 
 export default class Cart extends Component {
     constructor(props) {

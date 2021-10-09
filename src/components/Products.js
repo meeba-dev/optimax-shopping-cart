@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { fetchProducts } from '../actions/productActions';
+//import { connect } from 'react-redux';
+//import { fetchProducts } from '../actions/productActions';
+//import { addToCart } from '../actions/cartActions';
 
-class Products extends Component {
+export default class Products extends Component {
     constructor(props) {
         super(props);
         this.state = {
             product: null
         };
     }
-    componentDidMount() {
-        this.props.fetchProducts();
-    }
+    
     render() {
         return(
             <div>
@@ -42,12 +41,3 @@ class Products extends Component {
         )
     }
 }
-
-export default connect((state) => (
-    {
-        products: state.products.items
-    }),
-    {
-        fetchProducts
-    }
-) (Products);
