@@ -23,11 +23,6 @@ Launch the server
 and start the app.
 ### `npm start`
 
-## Theory section
-
-<p align="center">
-    <img src="./public/images/redux-flow.jpg"/>
-</p>
 
 <div>
     <p>
