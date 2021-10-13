@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { addToCart, removeFromCart, takeFromCart } from '../actions/cartActions';
+import { createOrder, clearOrder } from '../actions/orderActions';
 
-export default class Cart extends Component {
+class Cart extends Component {
     constructor(props) {
         super(props);
         this.state = { 
@@ -19,7 +22,8 @@ export default class Cart extends Component {
             name: this.state.name,
             email: this.state.email,
             address: this.state.address,
-            cartItems: this.props.cartItems
+            cartItems: this.props.cartItems,
+            total: this.props.cartItems.reduce((a, c) => a + c.price * c.count, 0)
         };
         this.props.createOrder(order);
     }
@@ -38,7 +42,7 @@ export default class Cart extends Component {
                 </div>
                 <div className="cart">
                     <ul className="cart-items">
-                        {cartItems.map(item => (
+                        { cartItems.map((item) => (
                         <li key={item._id}>
                             <div className="left">
                                 <img src={item.image} alt={item.title} />
@@ -50,7 +54,7 @@ export default class Cart extends Component {
                             <div>
                                 <div>{item.title}</div>
                                 <div className="right">
-                                    ${item.price} x {item.count}{" "}
+                                    $ {item.price} x {item.count}{" "}
                                     <button className="button" onClick={() => this.props.removeFromCart(item)}>
                                         Remove
                                     </button>      
@@ -99,4 +103,17 @@ export default class Cart extends Component {
             </div>
         );
     }
-}
+};
+
+export default connect(
+    (state) => ({
+        cartItems: state.cart.cartItems,
+    }),
+    {
+        removeFromCart,
+        addToCart,
+        takeFromCart,
+        createOrder,
+        clearOrder
+    }
+)(Cart);

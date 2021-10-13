@@ -1,4 +1,4 @@
-import { FETCH_PRODUCTS } from "../types";
+import { FETCH_PRODUCTS } from '../types';
 
 export const productsReducer = (state = {}, action) => {
     switch (action.type) {

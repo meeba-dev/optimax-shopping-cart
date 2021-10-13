@@ -23,6 +23,14 @@ Launch the server
 and start the app.
 ### `npm start`
 
+## To see some theory about used packages
+
+### Redux Flow
+
+<p align="center">
+    <img src="./public/images/redux-flow.jpg"/>
+</p>
+
 <div>
     <p>
         <img src="./public/favicon.ico" width="100"/>
