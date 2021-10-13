@@ -16,16 +16,14 @@ This project was made by React, Redux and TypeScript.
 
 Open [http://heroku.com](http://heroku.com) to view it in the browser.
 
-## To deploy it on your machine
+## To deploy on your machine
 
 Launch the server
 ### `npm run server`
 and start the app.
 ### `npm start`
 
-# Theory section
-
-## Redux Flow
+## Theory section
 
 <p align="center">
     <img src="./public/images/redux-flow.jpg"/>
