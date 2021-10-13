@@ -6,7 +6,7 @@ This project was made by React, Redux and TypeScript.
 
 * Created a react project
 * Added react components
-* Added markup elements
+* Added html elements
 * Added css styles
 * Added data of products
 * Added server configuration
