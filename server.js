@@ -6,6 +6,7 @@ const config = require('./src/config.json');
 
 const app = express();
 app.use(bodyParser.json());
+app.get("https://optimax-shopping-cart.herokuapp.com/");
 
 if (process.env.DB_URL) {
     mongoose.connect(process.env.DB_URL, {
