@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { addToCart, removeFromCart, takeFromCart } from '../actions/cartActions';
 import { createOrder, clearOrder } from '../actions/orderActions';
 import Modal from 'react-modal';
-import formatDate from '../utility/formaters';
+import { formatDate } from '../utility/formaters';
 
 class Cart extends Component {
     constructor(props) {
@@ -51,16 +51,16 @@ class Cart extends Component {
                             <h2>Order {order._id}</h2>
                             <ul>
                                 <li>
-                                    <div>Card holder:</div>
-                                    <div>{order.name}</div>
+                                    <div>Date:</div>
+                                    <div>{formatDate(order.createdAt)}</div>
                                 </li>
                                 <li>
                                     <div>Email:</div>
                                     <div>{order.email}</div>
                                 </li>
                                 <li>
-                                    <div>Date:</div>
-                                    <div>{formatDate(order.createdAt)}</div>
+                                    <div>Customer:</div>
+                                    <div>{order.name}</div>
                                 </li>
                                 <li>
                                     <div>Receipt details:</div>

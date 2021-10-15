@@ -1,0 +1,4 @@
+{
+    "DB_URL":
+        "mongodb+srv://meeba:123@cluster0.rxbkq.mongodb.net/optimax-cart-db?retryWrites=true&w=majority"
+}

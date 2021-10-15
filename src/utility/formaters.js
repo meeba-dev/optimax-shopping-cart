@@ -1,4 +1,4 @@
-export default function formatDate(date) {
+function formatDate(date) {
 
     var d = new Date(date);
 
@@ -12,4 +12,20 @@ export default function formatDate(date) {
     };
 
     return d.toLocaleString('en-US', options);
+};
+
+function generateID() {
+    var password = "";
+    var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    for (var i = 0; i < 3; i++)
+        if (i < 2)
+            password += alphabet.charAt(Math.random() * alphabet.length);
+        if (i > 1)
+            password += Math.round(Math.random() * 100000000);
+
+    return password.toString();
+};
+
+module.exports = {
+    formatDate, generateID
 }

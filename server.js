@@ -1,21 +1,30 @@
 const express = require("express");
-const shortid = require("shortid");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const format = require("./src/utility/formaters");
+const config = require('./src/config.json');
 
 const app = express();
 app.use(bodyParser.json());
 
-mongoose.connect("mongodb://localhost/optimax-shopping-cart-db", {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true
-});
+if (process.env.DB_URL) {
+    mongoose.connect(process.env.DB_URL, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true
+	}).then(() => console.log('MongoDB is connected by heroku server'))
+	  .catch((err) => console.log(err));
+} else {
+    mongoose.connect(config.DB_URL, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true
+	}).then(() => console.log('MongoDB is connected by local machine'))
+	  .catch((err) => console.log(err));
+}
 
 const Product = mongoose.model(
     "product", 
     new mongoose.Schema({
-        _id: { type: String, default: shortid.generate },
+        _id: { type: String, default: format.generateID },
         title: String,
         description: String,
         image: String,
@@ -42,10 +51,9 @@ app.delete("/api/products/:id", async(req, res) => {
 const Order = mongoose.model(
     "order",
     new mongoose.Schema({
-        _id: { type: String, default: shortid.generate },
+        _id: { type: String, default: format.generateID },
         email: String,
         name: String,
-        address: String,
         total: Number,
         cartItems: [
             {
