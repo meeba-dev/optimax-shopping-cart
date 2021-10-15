@@ -1,6 +1,5 @@
 {
   "name": "optimax-shopping-cart",
-  "proxy": "https://optimax-shopping-cart.herokuapp.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
