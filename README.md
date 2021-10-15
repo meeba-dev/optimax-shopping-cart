@@ -14,7 +14,7 @@ This project was made by React, Redux and TypeScript.
 
 ## To look at finished result
 
-Open [http://heroku.com](http://heroku.com) to view it in the browser.
+Open [https://optimax-shopping-cart.herokuapp.com](https://optimax-shopping-cart.herokuapp.com) to view it in the browser.
 
 ## To deploy on your machine
 
