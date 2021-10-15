@@ -6,7 +6,7 @@ export default class Header extends Component {
         return (
             <header>
             <a href="/">
-              <img src="/images/optimax-logo.png" alt="logo"/>
+              <img src="/optimax-logo.png" alt="logo"/>
             </a>
           </header>
         )

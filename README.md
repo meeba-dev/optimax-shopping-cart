@@ -11,6 +11,8 @@ This project was made by React, Redux and TypeScript.
 * Added data of products
 * Added server configuration
 * Added redux
+* Added mongodb API methods
+* The project is launched by heroku server
 
 ## To look at finished result
 
