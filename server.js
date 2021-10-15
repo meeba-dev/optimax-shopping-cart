@@ -96,3 +96,4 @@ app.delete("/api/orders/:id", async(req, res) => {
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log("Server is running..."));
+setInterval(function () { app.get("https://optimax-shopping-cart.herokuapp.com/"); }, 300000);
