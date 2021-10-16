@@ -1,14 +1,12 @@
 import React from 'react';
 import Products from './components/Products';
 import Cart from './components/Cart';
-import store from './store';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
 export default class App extends React.Component {
   
   render() {
-    window.store = store;
     return (
         <div className="grid-container">
           <Header />
