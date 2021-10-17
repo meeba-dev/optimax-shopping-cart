@@ -1,16 +1,17 @@
-var mongoose = require('mongoose');
-const generateID = require("./src/utility/formaters");
+const mongoose = require('mongoose');
+const format = require('../utility/formaters');
 
 var Schema = mongoose.Schema;
 var ProductSchema = new Schema({
-        _id: { type: String, default: generateID },
+        _id: { type: String, default: format.generateID },
         title: String,
         description: String,
         image: String,
-        price: Number
+        price: Number,
+        date : { type : Date, default: Date.now }
     },
     {
-        timestamps: true,
+        timestamps: false,
         versionKey: false
     }
 );

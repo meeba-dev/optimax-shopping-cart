@@ -1,9 +1,9 @@
-var mongoose = require('mongoose');
-const generateID = require("./src/utility/formaters");
+const mongoose = require('mongoose');
+const format = require('../utility/formaters');
 
 var Schema = mongoose.Schema;
 var OrderSchema = new Schema({
-        _id: { type: String, default: generateID },
+        _id: { type: String, default: format.generateID },
         email: String,
         name: String,
         cartItems: [
@@ -14,10 +14,11 @@ var OrderSchema = new Schema({
                 count: Number
             }
         ],
-        total: Number
+        total: Number,
+        date : { type : Date, default: Date.now }
     },
     {
-          timestamps: true,
+          timestamps: false,
           versionKey: false
     }
 );

@@ -23,7 +23,8 @@ class Cart extends Component {
             name: this.state.name,
             email: this.state.email,
             cartItems: this.props.cartItems,
-            total: this.props.cartItems.reduce((a, c) => a + c.price * c.count, 0)
+            total: this.props.cartItems.reduce((a, c) => a + c.price * c.count, 0),
+            date: formatDate(new Date())
         };
         this.props.createOrder(order);
     }
@@ -52,7 +53,7 @@ class Cart extends Component {
                             <ul>
                                 <li>
                                     <div>Date:</div>
-                                    <div>{formatDate(order.createdAt)}</div>
+                                    <div>{formatDate(order.date)}</div>
                                 </li>
                                 <li>
                                     <div>Email:</div>
