@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { addToCart, removeFromCart, takeFromCart } from '../actions/cartActions';
+import { addToCart, removeFromCart, addOneToCart, removeOneFromCart } from '../actions/cartActions';
 import { createOrder, clearOrder } from '../actions/orderActions';
 import Modal from 'react-modal';
 import { formatDate } from '../utility/formaters';
 
-class Cart extends Component {
+class Cart extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
@@ -88,8 +88,8 @@ class Cart extends Component {
                             <div className="left">
                                 <img src={item.image} alt={item.title} />
                                 <div className="left-inside">
-                                    <button onClick={() => this.props.addToCart(item)} className="add button">+</button>
-                                    <button onClick={() => this.props.takeFromCart(item)} className="reduce button">-</button>
+                                    <button onClick={() => this.props.addOneToCart(item)} className="add button">+</button>
+                                    <button onClick={() => this.props.removeOneFromCart(item)} className="reduce button">-</button>
                                 </div>
                             </div>
                             <div>
@@ -134,11 +134,11 @@ class Cart extends Component {
                                         </li>
                                         <li>
                                             <label>CARD HOLDER</label>
-                                            <input name="name" type="text" required onChange={this.handleInput} placeholder="Joe Doe"/>
+                                            <input name="name" type="text" required onChange={this.handleInput} placeholder="John Doe"/>
                                         </li>
                                         <li>
                                             <label>EMAIL</label>
-                                            <input name="email" type="email" required onChange={this.handleInput} placeholder="joedoe@gmail.com"/>
+                                            <input name="email" type="email" required onChange={this.handleInput} placeholder="johndoe@gmail.com"/>
                                         </li>
                                         <li>
                                             <button type="submit" className="button primary">Checkout</button>
@@ -160,9 +160,10 @@ export default connect(
         order: state.order.order
     }),
     {
-        removeFromCart,
         addToCart,
-        takeFromCart,
+        addOneToCart,
+        removeFromCart,
+        removeOneFromCart,
         createOrder,
         clearOrder
     }

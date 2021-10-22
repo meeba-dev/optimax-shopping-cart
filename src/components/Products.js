@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { fetchProducts } from '../actions/productActions';
 import { addToCart } from '../actions/cartActions';
 
-class Products extends Component {
+class Products extends React.Component {
 
     componentDidMount() {
         this.props.fetchProducts();
