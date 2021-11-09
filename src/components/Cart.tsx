@@ -1,25 +1,44 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addToCart, removeFromCart, addOneToCart, removeOneFromCart } from '../actions/cartActions';
+import { removeFromCart, addOneToCart, removeOneFromCart } from '../actions/cartActions';
 import { createOrder, clearOrder } from '../actions/orderActions';
 import Modal from 'react-modal';
-import { formatDate } from '../utility/formaters';
+import { formatDate, generateID } from '../utility/formaters';
+import { OrderType, ProductType } from '../types/elementTypes';
+import { AppState } from '../store';
 
-class Cart extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { 
-            name: "",
-            email: "",
-            showCheckout: false 
-        };
+
+type Props = { 
+    cartItems: ProductType[];
+    order: OrderType;
+    addOneToCart: (product: ProductType) => void;
+    removeFromCart: (product: ProductType) => void;
+    removeOneFromCart: (product: ProductType) => void;
+    createOrder: (onChange: OrderType) => void;
+    clearOrder: () => void;
+}
+
+type State = {
+    name: string;
+    email: string;
+    showCheckout: boolean;
+};
+
+class Cart extends React.Component<Props, State>{
+
+    state: State = {
+        name: "",
+        email: "",
+        showCheckout: false 
     }
-    handleInput = (e) => {
-        this.setState({[e.target.name] : e.target.value});
+    
+    handleInput = (event : React.ChangeEvent<HTMLInputElement>) => {
+        this.setState({...this.state, [event.target.name] : event.target.value});
     }
-    createOrder = (e) => {
-        e.preventDefault();
-        const order = {
+    createOrder = (event : React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const order : OrderType = {
+            _id: generateID(),
             name: this.state.name,
             email: this.state.email,
             cartItems: this.props.cartItems,
@@ -30,13 +49,18 @@ class Cart extends React.Component {
     }
     closeModal = () => {
         this.props.clearOrder();
+        this.setState({showCheckout: false});
+        this.props.cartItems.length = 0;
+    };
+    componentDidMount() {
+        Modal.setAppElement('body');
     };
     render() {
-        const {cartItems, order} = this.props;
+        const { cartItems, order } = this.props;
         return (
             <div>
                 <div>
-                    {cartItems.length === 0? (
+                    {cartItems.length === 0 ? (
                         <div className="cart cart-header">Cart is empty</div>
                     ) : (
                         <div className="cart cart-header">
@@ -53,7 +77,7 @@ class Cart extends React.Component {
                             <ul>
                                 <li>
                                     <div>Date:</div>
-                                    <div>{formatDate(order.date)}</div>
+                                    <div>{formatDate(new Date(order.date))}</div>
                                 </li>
                                 <li>
                                     <div>Email:</div>
@@ -74,13 +98,12 @@ class Cart extends React.Component {
                                     </div>
                                 </li>
                                 <li>
-                                    <div>Total: </div>
-                                    <div>{"$"}{order.total}</div>
+                                    <div>Total: {"$"}{order.total}</div>
                                 </li>
                             </ul>
                         </div>
                     </Modal>
-                  )}
+                )}
                 <div className="cart">
                     <ul className="cart-items">
                         { cartItems.map((item) => (
@@ -127,7 +150,7 @@ class Cart extends React.Component {
                                         <li>
                                             <div className="expiration-date">
                                                 <input name="month" type="text" required onChange={this.handleInput} placeholder="MM"/>
-                                                <p align="center">{"/"}</p>
+                                                <p>{"/"}</p>
                                                 <input name="year" type="text" required onChange={this.handleInput} placeholder="YY"/>
                                                 <input name="cvc" type="text" required onChange={this.handleInput} placeholder="CVV"/>
                                             </div>
@@ -155,12 +178,11 @@ class Cart extends React.Component {
 };
 
 export default connect(
-    (state) => ({
+    (state : AppState) => ({
         cartItems: state.cart.cartItems,
         order: state.order.order
     }),
     {
-        addToCart,
         addOneToCart,
         removeFromCart,
         removeOneFromCart,

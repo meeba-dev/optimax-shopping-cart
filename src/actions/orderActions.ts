@@ -1,6 +1,9 @@
-import { CLEAR_CART, CLEAR_ORDER, CREATE_ORDER } from "../types"
+import { Dispatch } from "react";
+import { OrderAction } from "../types/actionCreatorsTypes";
+import { CLEAR_CART, CLEAR_ORDER, CREATE_ORDER } from "../types/actionTypes";
+import { OrderType } from "../types/elementTypes";
 
-export const createOrder = (order) => (dispatch) => {
+export const createOrder = (order : OrderType) => (dispatch : Dispatch<OrderAction>) => {
     fetch("/api/orders", {
         method: "POST",
         headers: {
@@ -12,14 +15,14 @@ export const createOrder = (order) => (dispatch) => {
             type: CREATE_ORDER,
             payload: data
         });
-        localStorage.clear("cartItems");
+        localStorage.clear();
         dispatch({
             type: CLEAR_CART
         });
     });
 };
 
-export const clearOrder = () => (dispatch) => {
+export const clearOrder = () => (dispatch : Dispatch<OrderAction>) => {
     dispatch({
         type: CLEAR_ORDER
     });

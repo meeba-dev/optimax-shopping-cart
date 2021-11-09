@@ -1,7 +1,10 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const config = require("./src/config.json");
+import express from "express";
+import mongoose from "mongoose";
+import bodyParser from "body-parser";
+import API from "./src/constants.json";
+
+import Product from "./src/models/Product";
+import Order from "./src/models/Order";
 
 const app = express();
 app.use(bodyParser.json());
@@ -16,15 +19,12 @@ if (process.env.DB_URL) {
 	}).then(() => console.log('MongoDB is connected by heroku server'))
 	  .catch((err) => console.log(err));
 } else {
-    mongoose.connect(config.DB_URL, {
+    mongoose.connect(API.DB_URL, {
 		useNewUrlParser: true,
 		useUnifiedTopology: true
 	}).then(() => console.log('MongoDB is connected by local machine'))
 	  .catch((err) => console.log(err));
 }
-
-const Product = require("./src/models/Product");
-const Order = require("./src/models/Order");
 
 app.get("/api/products", async (req, res) => {
     const product = await Product.find({});

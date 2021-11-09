@@ -1,9 +1,11 @@
-import { ADD_TO_CART, ADD_ONE_TO_CART, REMOVE_FROM_CART, REMOVE_ONE_FROM_CART } from "../types";
+import { CartAction } from "../types/actionCreatorsTypes";
+import { ADD_TO_CART, ADD_ONE_TO_CART, REMOVE_FROM_CART, REMOVE_ONE_FROM_CART } from "../types/actionTypes";
+import { CartState } from "../types/stateTypes";
 
-export const cartReducer = (
-    state = { 
-        cartItems: JSON.parse(localStorage.getItem("cartItems") || "[]")}, 
-            action) => {
+
+const initialState = { cartItems: JSON.parse(localStorage.getItem("cartItems") || "[]") };
+
+export const cartReducer = (state : CartState = initialState, action: CartAction) : CartState => {
         switch (action.type) {
             case ADD_TO_CART:
                 return { cartItems: action.payload.cartItems };

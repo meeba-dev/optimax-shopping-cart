@@ -1,5 +1,5 @@
-import { CLEAR_ORDER, CREATE_ORDER } from '../types';
-import { clearOrder, createOrder } from './orderActions';
+import { CLEAR_ORDER } from '../types/actionTypes';
+import { clearOrder } from './orderActions';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 

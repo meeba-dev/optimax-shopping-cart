@@ -5,16 +5,22 @@ import { productsReducer } from './reducers/productReducers';
 import { cartReducer } from './reducers/cartReducers';
 import { orderReducer } from './reducers/orderReducers';
 
+
 const initialState = {};
 
+const rootReducer = combineReducers({
+    products: productsReducer,
+    cart: cartReducer,
+    order: orderReducer
+});
+
 const store = createStore(
-    combineReducers({ 
-        products: productsReducer,
-        cart: cartReducer,
-        order: orderReducer
-    }),
+    rootReducer,
     initialState,
     composeWithDevTools(applyMiddleware(thunk))
 );
+
+type RootState = typeof rootReducer;
+export type AppState = ReturnType<RootState>
 
 export default store;

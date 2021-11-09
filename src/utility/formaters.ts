@@ -1,11 +1,11 @@
-function formatDate(date) {
+function formatDate(date: Date) {
 
     var d = new Date(date);
 
-    const options = {  
-        year: 'numeric', 
-        month: 'long', 
+    const options : Intl.DateTimeFormatOptions = {  
         day: 'numeric',
+        month: 'long', 
+        year: 'numeric', 
         hour: '2-digit',
         minute: '2-digit',
         second: '2-digit'
@@ -26,6 +26,4 @@ function generateID() {
     return password.toString();
 };
 
-module.exports = {
-    formatDate, generateID
-}
+export { formatDate, generateID };

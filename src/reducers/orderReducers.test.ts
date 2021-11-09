@@ -1,4 +1,4 @@
-import { CLEAR_ORDER, CREATE_ORDER } from "../types";
+import { CLEAR_ORDER, CREATE_ORDER } from "../types/actionTypes";
 import { orderReducer } from "./orderReducers";
 
 describe('order reducers', () => {

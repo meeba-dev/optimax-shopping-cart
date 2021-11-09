@@ -2,11 +2,30 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchProducts } from '../actions/productActions';
 import { addToCart } from '../actions/cartActions';
+import { ProductType } from '../types/elementTypes';
+import { ProductState } from '../types/stateTypes';
 
-class Products extends React.Component {
 
+type Props = {
+  products: Array<ProductType>;
+  fetchProducts: () => void;
+  addToCart: (product: ProductType) => void;
+}
+
+type State = {
+  product: ProductType;
+}
+
+class Products extends React.Component<Props, State> {
+    
     componentDidMount() {
         this.props.fetchProducts();
+    };
+    openModal = (product : ProductType) => {
+      this.setState({ product });
+    };
+    closeModal = () => {
+      this.setState({ product: {} as ProductType });
     };
     render() {
         return(
@@ -41,7 +60,7 @@ class Products extends React.Component {
 
 
 export default connect(
-    (state) => ({ products: state.products.items }),
+    (state : ProductState) => ({ products: state.products.items }),
     {
         fetchProducts,
         addToCart
