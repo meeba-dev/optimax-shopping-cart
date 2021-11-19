@@ -8,13 +8,13 @@ import { orderReducer } from './reducers/orderReducers';
 
 const initialState = {};
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
     products: productsReducer,
     cart: cartReducer,
     order: orderReducer
 });
 
-const store = createStore(
+const store  = createStore(
     rootReducer,
     initialState,
     composeWithDevTools(applyMiddleware(thunk))

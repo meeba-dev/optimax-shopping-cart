@@ -6,13 +6,11 @@ import Footer from './components/Footer';
 import store from './store';
 import { Provider } from 'react-redux';
 
-declare const window: any;
+
 export default class App extends React.Component {
   
   render() {
-    // не пушить со строками 4 и 12
     
-    window.store = store;
     return (
       <Provider store={store}>
         <div className="grid-container">

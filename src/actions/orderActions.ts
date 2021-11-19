@@ -22,6 +22,13 @@ export const createOrder = (order : OrderType) => (dispatch : Dispatch<OrderActi
     });
 };
 
+export const testCreateOrder = (order : OrderType) => (dispatch : Dispatch<OrderAction>) => {
+    dispatch({
+        type: CREATE_ORDER,
+        payload: order
+    });
+};
+
 export const clearOrder = () => (dispatch : Dispatch<OrderAction>) => {
     dispatch({
         type: CLEAR_ORDER

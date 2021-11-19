@@ -1,39 +1,54 @@
-import React from 'react';
 import Products from './Products';
-import { shallow } from 'enzyme';
-import configureStore from 'redux-mock-store'
+import { Provider } from 'react-redux';
+import { render, screen } from '@testing-library/react';
+import { ProductState } from '../types/stateTypes';
+import thunk from 'redux-thunk';
+import configureMockStore, { MockStore } from 'redux-mock-store';
 
 describe('Products component', () => {
 
-    const initialState = { 
-        cartItems: [
-            {
-                "_id": "AM12721745",
-                "title": "RB2132",
-                "image": "/images/RB2132.png",
-                "description": "about glasses 11",
-                "price": 159
-            },
-            {
-                "_id": "GY54401995",
-                "title": "RB4340",
-                "image": "/images/RB4340.png",
-                "description": "about glasses 13",
-                "price": 186
-            }
-        ] 
+    const initialState : ProductState = { products: 
+        {
+            items: [
+                {
+                    "_id": "glasses6",
+                    "title": "RB2201V",
+                    "image": "/images/RB2201V.png",
+                    "description": "about glasses 6",
+                    "price": 177,
+                    "count": 3
+                },
+                {
+                    "_id": "glasses7",
+                    "title": "RX5398",
+                    "image": "/images/RX5398.png",
+                    "description": "about glasses 7",
+                    "price": 187,
+                    "count": 1
+                },
+                {
+                    "_id": "glasses8",
+                    "title": "RB7046",
+                    "image": "/images/RB7046.png",
+                    "description": "about glasses 8",
+                    "price": 153,
+                    "count": 5
+                }
+            ]
+        } 
     };
-    const mockStore = configureStore();
-    let component;
-    let store;
+
+    let store : MockStore;
 
     beforeEach(() => {
+        const middlewares = [thunk];
+        const mockStore = configureMockStore(middlewares);
         store = mockStore(initialState);
-        component = shallow(<Products store={store}/>);
+        render(<Provider store={store}><Products /></Provider>)
     });
 
-    it('should render Products component', () => {
-        expect(component.length).toEqual(1);
+    it('should find all products in Products component', () => {
+        expect(screen.getAllByRole('listitem')).toHaveLength(3);
     });
     
 });
