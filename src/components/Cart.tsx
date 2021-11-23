@@ -24,6 +24,11 @@ type State = {
     showCheckout: boolean;
 };
 
+/**
+ * Component for showing cart's content
+ * @component
+ * @returns rendered component
+ */
 class Cart extends React.Component<Props, State>{
 
     state: State = {
@@ -31,10 +36,17 @@ class Cart extends React.Component<Props, State>{
         email: "",
         showCheckout: false 
     }
-    
+    /**
+     * Handler of input data
+     * @param event data from input forms
+     */
     handleInput = (event : React.ChangeEvent<HTMLInputElement>) => {
         this.setState({...this.state, [event.target.name] : event.target.value});
     }
+    /**
+     * Method for creating new order for database and modal window (receipt)
+     * @param event order's object with all data
+     */
     createOrder = (event : React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const order : OrderType = {
@@ -47,6 +59,12 @@ class Cart extends React.Component<Props, State>{
         };
         this.props.createOrder(order);
     }
+    /**
+     * Closing the modal window with order's data.
+     * Also, it trigger the next actions:
+     * - Removing the date in component's state
+     * - Closing checkout form and clearing the shopping cart
+     */
     closeModal = () => {
         this.props.clearOrder();
         this.setState({showCheckout: false});

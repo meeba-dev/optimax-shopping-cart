@@ -1,6 +1,10 @@
 import React from "react";
 
-
+/**
+ * Component for showing footer
+ * @component
+ * @returns rendered component
+ */
 const Footer : React.FC = () => {
     return ( 
         <footer>

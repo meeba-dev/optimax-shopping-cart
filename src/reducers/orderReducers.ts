@@ -4,6 +4,12 @@ import { OrderState } from "../types/stateTypes";
 
 const initialState = {} as OrderState;
 
+/**
+ * Order reducer. Createing and removing the order.
+ * @param state is the old state of order
+ * @param action is the initialized action 
+ * @returns new state
+ */
 export const orderReducer = (state = initialState, action : OrderAction): OrderState => {
     switch (action.type) {
         case CREATE_ORDER:

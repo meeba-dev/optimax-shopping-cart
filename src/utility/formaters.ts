@@ -1,4 +1,10 @@
-function formatDate(date: Date) {
+/**
+ * Changing a format date and convert it to string after that
+ * @param {date} date current date 
+ * @returns {string} current date in format: dddd, mmmm dS, yyyy, hh:MM:ss TT
+ */
+
+function formatDate(date: Date): string {
 
     var d = new Date(date);
 
@@ -13,6 +19,11 @@ function formatDate(date: Date) {
 
     return d.toLocaleString('en-US', options);
 };
+
+/**
+ * Generating object's ID in format AA000000
+ * @returns {string} object's ID
+ */
 
 function generateID() {
     var password = "";

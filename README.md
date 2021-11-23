@@ -1,4 +1,4 @@
-# Optimax test task for front-end developer
+# Optimax test task
 
 This project was made by React, Redux and TypeScript.
 
@@ -13,6 +13,9 @@ This project was made by React, Redux and TypeScript.
 * Added redux
 * Added mongodb API methods
 * The project is launched by heroku server
+* Migrated to typescript
+* Added unit tests
+* Created a documentation of project
 
 ## To look at finished result
 

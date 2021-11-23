@@ -27,6 +27,7 @@
     "fetch-mock": "^9.11.0",
     "fetch-mock-jest": "^1.5.1",
     "jest-extended": "^1.1.0",
+    "jsdoc": "^3.6.7",
     "mongoose": "^5.9.14",
     "node-fetch": "^3.0.0",
     "nodemon": "^2.0.13",
@@ -42,7 +43,6 @@
     "redux-mock-store": "^1.5.4",
     "redux-thunk": "^2.3.0",
     "shortid": "^2.2.16",
-    "sinon": "^12.0.1",
     "ts-node": "^10.4.0",
     "typescript": "^4.4.4"
   },
@@ -51,7 +51,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "docs": "jsdoc -c jsdoc.json"
   },
   "eslintConfig": {
     "extends": [
@@ -77,6 +78,7 @@
   },
   "devDependencies": {
     "@types/sinon": "^10.0.6",
+    "better-docs": "^2.3.2",
     "jest": "^26.6.0",
     "jest-fetch-mock": "^3.0.3"
   }

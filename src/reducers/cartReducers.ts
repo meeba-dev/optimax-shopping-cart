@@ -5,6 +5,12 @@ import { CartState } from "../types/stateTypes";
 
 const initialState = { cartItems: JSON.parse(localStorage.getItem("cartItems") || "[]") };
 
+/**
+ * Cart reducer. Adding to a cart and removing from the cart.
+ * @param state is the old state of cart
+ * @param action is the initialized action 
+ * @returns new state
+ */
 export const cartReducer = (state : CartState = initialState, action: CartAction) : CartState => {
         switch (action.type) {
             case ADD_TO_CART:

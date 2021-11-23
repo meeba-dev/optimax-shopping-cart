@@ -1,6 +1,10 @@
 import React from "react";
 
-
+/**
+ * Component for showing header
+ * @component
+ * @returns rendered component
+ */
 const Header : React.FC = () => {
     return (
         <header>
