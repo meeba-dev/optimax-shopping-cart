@@ -5,14 +5,16 @@ import React from "react";
  * @component
  * @returns rendered component
  */
-const Header : React.FC = () => {
+class Header extends React.Component {
+  render() {
     return (
-        <header>
-          <a href="/">
-            <img src="/optimax-logo.png" alt="logo"/>
-          </a>
-        </header>
+      <header>
+        <a href="/">
+          <img src="/optimax-logo.png" alt="logo"/>
+        </a>
+      </header>
     )
+  }
 };
 
 export default Header;

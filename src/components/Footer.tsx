@@ -5,13 +5,15 @@ import React from "react";
  * @component
  * @returns rendered component
  */
-const Footer : React.FC = () => {
+class Footer extends React.Component {
+  render() {
     return ( 
-        <footer>
-            <p> Made with &#9752; by Mikhail Baum</p>
-            <p>&copy; All copyrights reserved 2021</p>
-        </footer>
+      <footer>
+        <p> Made with &#9752; by Mikhail Baum</p>
+        <p>&copy; All copyrights reserved 2021</p>
+      </footer>
     )
+  }
 };
 
 export default Footer;

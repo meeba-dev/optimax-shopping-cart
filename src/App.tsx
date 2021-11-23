@@ -11,7 +11,7 @@ import { Provider } from 'react-redux';
  * Main component. App renders the application.
  */
 
-export default class App extends React.Component {
+class App extends React.Component {
   
   render() {
     
@@ -35,3 +35,5 @@ export default class App extends React.Component {
     );
   }
 }
+
+export default App;
