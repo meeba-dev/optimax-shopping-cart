@@ -12,14 +12,14 @@ app.use(bodyParser.json());
 app.use("/", express.static(__dirname + "/build"));
 app.get("/", (req, res) => res.sendFile(__dirname + "/build/index.html"));
 
-if (process.env.DB_URL) {
-    mongoose.connect(process.env.DB_URL, {
+if (process.env.MONGODB_URI) {
+    mongoose.connect(process.env.MONGODB_URI, {
 		useNewUrlParser: true,
 		useUnifiedTopology: true
-	}).then(() => console.log('MongoDB is connected by heroku server'))
+	}).then(() => console.log('MongoDB is connected by Vercel'))
 	  .catch((err) => console.log(err));
 } else {
-    mongoose.connect(API.DB_URL, {
+    mongoose.connect(API.MONGODB_URI, {
 		useNewUrlParser: true,
 		useUnifiedTopology: true
 	}).then(() => console.log('MongoDB is connected by local machine'))
